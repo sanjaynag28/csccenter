@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Billing Software</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Billing Software</h1>
+        
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <form id="billForm">
+                            <div class="mb-3">
+                                <label for="customerName" class="form-label">Customer Name</label>
+                                <input type="text" class="form-control" id="customerName" required>
+                            </div>
+                            
+                            <div id="itemsContainer">
+                                <div class="item-row mb-3">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <input type="text" class="form-control item-name" placeholder="Item Name" required>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="number" class="form-control item-quantity" placeholder="Quantity" min="1" required>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <input type="number" class="form-control item-price" placeholder="Price" step="0.01" min="0" required>
+                                        </div>
+                                        <div class="col-md-1">
+                                            <button type="button" class="btn btn-danger remove-item">&times;</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <button type="button" id="addItem" class="btn btn-secondary mb-3">Add Item</button>
+                            
+                            <div class="mb-3">
+                                <h4>Total Amount: ₹<span id="totalAmount">0.00</span></h4>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary">Generate Bill</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Recent Bills</h5>
+                        <div id="recentBills"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
